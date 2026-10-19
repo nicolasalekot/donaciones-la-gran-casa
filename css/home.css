@@ -43,7 +43,7 @@
 }
 /* Tarjetas de datos junto al logo */
 .float-stack { position: absolute; left: -12%; bottom: -3%; width: min(340px, 86%); display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.float-card.big { grid-column: 1 / -1; width: min(236px, 70%); }
+.float-card.big { grid-column: 1 / -1; width: 100%; }
 .float-card.m1 { animation-delay: 1.4s; } .float-card.m2 { animation-delay: 2s; } .float-card.m3 { animation-delay: 2.6s; }
 .float-card.mini { padding: 13px 15px 12px; border-radius: 18px; min-width: 0; }
 .float-card.mini .fc-i { width: 30px; height: 30px; border-radius: 9px; margin-bottom: 8px; }
