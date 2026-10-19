@@ -1,0 +1,65 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function profilePath(uid) { return /databases/$(database)/documents/users/$(uid); }
+    function hasProfile() { return signedIn() && exists(profilePath(request.auth.uid)); }
+    function prof() { return get(profilePath(request.auth.uid)).data; }
+    function isActive() { return hasProfile() && prof().active == true; }
+    function isAdmin() { return isActive() && prof().role == 'admin'; }
+    function canEdit() { return isActive() && (prof().role == 'admin' || prof().role == 'editor'); }
+
+    // Perfiles de usuario
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+
+      // Una cuenta nueva solo puede crearse con rol "consulta" y PENDIENTE de aprobación
+      // (active: false, pending: true): no entra hasta que un administrador la apruebe.
+      // La única excepción es la primera persona de todas, que queda como administradora.
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name','email','via','role','active','pending','phone','title','theme','photo','created'])
+        && request.resource.data.email.lower() == request.auth.token.email.lower()
+        && (
+          (request.resource.data.role == 'consulta'
+            && request.resource.data.active == false
+            && request.resource.data.pending == true)
+          ||
+          (request.resource.data.role == 'admin'
+            && request.resource.data.active == true
+            && request.resource.data.pending == false
+            && !exists(/databases/$(database)/documents/meta/admin)
+            && existsAfter(/databases/$(database)/documents/meta/admin))
+        );
+
+      // Cada persona edita sus datos personales; solo el admin cambia rol y estado de otras personas.
+      allow update: if signedIn() && (
+        (request.auth.uid == uid && isActive()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name','phone','title','theme','photo']))
+        ||
+        (isAdmin() && request.auth.uid != uid
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role','active','pending']))
+      );
+
+      allow delete: if signedIn() && request.auth.uid == uid;
+    }
+
+    // Marca de que ya existe el primer administrador (se crea una sola vez)
+    match /meta/{docId} {
+      allow read: if signedIn();
+      allow create: if signedIn() && docId == 'admin'
+        && !exists(/databases/$(database)/documents/meta/admin)
+        && request.resource.data.uid == request.auth.uid
+        && existsAfter(profilePath(request.auth.uid))
+        && getAfter(profilePath(request.auth.uid)).data.role == 'admin';
+      allow update, delete: if false;
+    }
+
+    // Donantes, donaciones y eventos
+    match /{coll}/{docId} {
+      allow read: if coll in ['donors','donations','events'] && isActive();
+      allow create, update: if coll in ['donors','donations','events'] && canEdit();
+      allow delete: if coll in ['donors','donations','events'] && isAdmin();
+    }
+  }
+}
