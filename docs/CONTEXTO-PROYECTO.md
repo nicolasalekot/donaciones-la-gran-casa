@@ -157,7 +157,7 @@ Se aplican en **dos lugares**: en la pantalla (`can()` oculta botones) y, lo imp
 
 ## 9. Trabajo planeado
 
-1. **Carga automática desde Mercado Pago:** una Cloud Function de Firebase recibe el aviso (webhook) de cada pago, lo asocia a un donante por email (o lo deja anónimo) y crea la donación con su tipo. Requiere el plan Blaze de Firebase y guardar las credenciales como secretos. Falta confirmar si las transferencias directas al alias también generan aviso.
+1. **Carga automática desde Mercado Pago:** una Cloud Function de Firebase recibe el aviso (webhook) de cada pago, lo asocia a un donante por email (o lo deja anónimo) y crea la donación con su tipo. Requiere el plan Blaze de Firebase y guardar las credenciales como secretos. **Estado: en pausa** hasta terminar la parte estética. Hallazgos de la documentación oficial (octubre 2026): los webhooks se configuran dentro de una aplicación de Mercado Pago Developers (eventos `payment` y `order`); la documentación de QR describe cobros generados por integración y aclara que esos avisos no se pueden validar con la clave secreta; sobre transferencias al alias/CVU no dice nada. Las donaciones hoy llegan por QR y por alias, así que **no está confirmado** que se puedan automatizar. Caminos: (1) probar con una aplicación y una donación chica por QR y otra por alias; (2) pasar a link de pago o QR generado por API; (3) importar el reporte de movimientos (CSV) desde la página, sin Cloud Function.
 2. Decidir si se agrega una pantalla pública de donación (con explicación de cada tipo para quien no conoce los términos).
 
 ## 10. Convenciones para seguir trabajando
