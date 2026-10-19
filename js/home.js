@@ -60,7 +60,7 @@ VIEW.inicio=()=>{
 
   /* ---- tarjetas ---- */
   const mxb=Math.max(1,...h.last6.map(x=>x.v));
-  const bars=h.last6.length?`<div class="mb">${h.last6.map(x=>`<div><i style="--h:${Math.max(.06,x.v/mxb).toFixed(3)}"></i><span>${x.m}</span></div>`).join('')}</div>`:'<p class="gc-e">Todavía no hay donaciones este año.</p>';
+  const bars=h.last6.length?`<div class="mbars">${h.last6.map(x=>`<div><i style="--h:${Math.max(.06,x.v/mxb).toFixed(3)}"></i><span>${x.m}</span></div>`).join('')}</div>`:'<p class="gc-e">Todavía no hay donaciones este año.</p>';
   const av=h.top.length?`<div class="avs">${h.top.map(d=>`<span class="avc">${esc(ini(d.name))}</span>`).join('')}${S.donors.length>4?`<span class="avc more">+${S.donors.length-4}</span>`:''}</div>`:'<p class="gc-e">Todavía no hay donantes.</p>';
   const ev=h.next[0],evv=ev?`<div class="evm"><b>${esc(ev.name)}</b><small>${fd(ev.date)}${ev.place?' · '+esc(ev.place):''}</small>${ev.goal?`<div class="bar"><i style="width:${Math.min(100,Math.round((ev.ing||0)/ev.goal*100))}%"></i></div><small>${money(ev.ing||0)} de ${money(ev.goal)}</small>`:''}</div>`:'<p class="gc-e">No hay eventos programados.</p>';
   const kt=sum(h.kinds,r=>r.t);

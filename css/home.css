@@ -113,18 +113,18 @@
 .gc:hover .arr { transform: translateX(5px); }
 
 /* Contenido de cada tarjeta */
-.mb { display: flex; align-items: flex-end; gap: 10px; width: 100%; height: 124px; }
-.mb div { flex: 1; min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 7px; }
-.mb i { display: block; width: 100%; max-width: 36px; height: calc((100% - 24px) * var(--h)); border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, var(--gold), rgba(var(--gold-rgb), .22)); box-shadow: 0 0 24px rgba(var(--gold-rgb), .38); transform-origin: bottom; animation: grow .9s cubic-bezier(.2, .8, .2, 1) both; }
-.mb span { font-size: 11.5px; color: var(--ink-soft); }
+.mbars { display: flex; align-items: flex-end; gap: 10px; width: 100%; height: 124px; }
+.mbars div { flex: 1; min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 7px; }
+.mbars i { display: block; width: 100%; max-width: 36px; height: calc((100% - 24px) * var(--h)); border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, var(--gold), rgba(var(--gold-rgb), .22)); box-shadow: 0 0 24px rgba(var(--gold-rgb), .38); transform-origin: bottom; animation: grow .9s cubic-bezier(.2, .8, .2, 1) both; }
+.mbars span { font-size: 11.5px; color: var(--ink-soft); }
 .avs { display: flex; align-items: center; }
 .avc { display: grid; place-items: center; width: 48px; height: 48px; margin-left: -12px; border-radius: 50%; font: 600 15px var(--font-head); background: var(--gold-soft); color: var(--gold-ink); border: 2px solid var(--gl-ring); }
 .avc:first-child { margin-left: 0; }
 .avc.more { background: var(--gl-track); color: var(--ink); }
 .evm b { display: block; font-size: 18px; line-height: 1.25; }
 .evm small { display: block; margin-top: 3px; color: var(--ink-soft); font-size: 13.5px; }
-.bar { height: 8px; margin: 14px 0 7px; border-radius: 6px; background: var(--gl-track); overflow: hidden; }
-.bar i { display: block; height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--gold), color-mix(in srgb, var(--gold) 55%, #fff)); }
+.home .bar { height: 8px; margin: 14px 0 7px; border-radius: 6px; background: var(--gl-track); overflow: hidden; }
+.home .bar i { display: block; height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--gold), color-mix(in srgb, var(--gold) 55%, #fff)); }
 .seg { display: flex; gap: 3px; width: 100%; height: 18px; border-radius: 10px; overflow: hidden; }
 .seg i { display: block; border-radius: 8px; }
 .lgd { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 16px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--ink-soft); }
