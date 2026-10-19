@@ -41,12 +41,12 @@ VIEW.inicio=()=>{
   const h=homeData(),nd=h.yr.length;
   const dlt=h.delta==null?`${nd} ${nd==1?'donación':'donaciones'} en ${h.y}`:`<b class="${h.delta<0?'dn':'up'}">${h.delta<0?'↓':'↑'} ${Math.abs(h.delta)}%</b> respecto al mes anterior`;
   const hero=`<section class="hero">
+    <div class="bleed"><i class="b-glow"></i><img class="clef3d" src="img/logo-3d.png" alt="Logo de la Fundación La Gran Casa"></div>
     <div class="hero-txt">
       <h1 class="hero-t"><span>Fundación</span><span class="gold">La Gran Casa</span><small>Sitio web de donaciones</small></h1>
       <div class="hero-b">${can('crear')?'<button class="btn primary big" onclick="editDon()">Registrar donación '+ARROW+'</button>':''}<a class="btn ghost big" href="#panel">Ver el panel</a></div>
     </div>
     <div class="hero-vis" aria-hidden="false">
-      <div class="orb"><i class="o-glow"></i><i class="o-ring r1"></i><i class="o-ring r2"></i><div class="o-disc"><img src="img/logo.png" alt="Logo de la Fundación La Gran Casa"></div></div>
       <div class="float-card"><span class="fc-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round"><path d="M20.800 4.600a5.500 5.500 0 0 0-7.800 0L12 5.700l-1-1.100a5.500 5.500 0 0 0-7.800 7.800l1 1.100L12 21l7.800-7.500 1-1.100a5.500 5.500 0 0 0 0-7.800z"/></svg></span>
         <small>Recaudado en ${h.y}</small><b>${money(h.tot)}</b>${sparkSvg(h.last6.map(x=>x.v))}<em>${dlt}</em></div>
     </div></section>`;

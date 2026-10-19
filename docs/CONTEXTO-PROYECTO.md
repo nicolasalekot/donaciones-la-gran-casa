@@ -59,6 +59,7 @@ js/sync.js                 Sincronización con Firestore, ensureProfile, flujo d
 js/legacy-import.js        Importación de datos de la versión que guardaba en el navegador
 js/main.js                 Arranque (boot)
 img/logo.png               Logo
+img/logo-3d.png            Logo en 3D de Inicio (render dorado del logo)
 firestore.rules            Reglas de seguridad
 ```
 

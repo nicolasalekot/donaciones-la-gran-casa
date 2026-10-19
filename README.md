@@ -47,6 +47,7 @@ Lo usa el equipo que administra las donaciones. No es una página pública: para
 │   ├── legacy-import.js       Importación de datos de la versión vieja
 │   └── main.js                Arranque
 ├── img/logo.png               Logo
+├── img/logo-3d.png            Logo en 3D de la pantalla Inicio (se corta en el borde derecho)
 ├── docs/CONTEXTO-PROYECTO.md  Cómo está armado el proyecto, en detalle
 ├── firestore.rules            Reglas de seguridad de la base de datos
 └── README.md                  Este archivo
