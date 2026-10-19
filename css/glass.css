@@ -32,16 +32,15 @@
 
 body { overflow-x: clip; }
 
-/* ---- Resplandor detrás del contenido de cada pantalla ---- */
-main { position: relative; isolation: isolate; }
-main::before {
-  content: ""; position: absolute; top: -40px; bottom: -40px; left: 50%; width: 100vw; transform: translateX(-50%);
-  z-index: -1; pointer-events: none;
+/* ---- Resplandor de fondo: una capa FIJA del tamaño de la pantalla ----
+   (no depende del alto del contenido, así nunca termina a mitad de página) */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(520px 420px at 84% 0%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .4)), transparent 70%),
-    radial-gradient(620px 460px at 6% 38%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .28)), transparent 70%),
-    radial-gradient(560px 420px at 92% 72%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .28)), transparent 70%),
-    radial-gradient(520px 400px at 10% 100%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .26)), transparent 70%);
+    radial-gradient(620px 460px at 88% 6%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .4)), transparent 70%),
+    radial-gradient(680px 520px at 4% 46%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .28)), transparent 70%),
+    radial-gradient(620px 480px at 94% 78%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .28)), transparent 70%),
+    radial-gradient(560px 440px at 12% 100%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .26)), transparent 70%);
 }
 
 /* ---- Tarjetas de vidrio (todas las pestañas) ---- */

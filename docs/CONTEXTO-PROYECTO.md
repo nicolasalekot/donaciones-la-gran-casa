@@ -147,6 +147,8 @@ Se aplican en **dos lugares**: en la pantalla (`can()` oculta botones) y, lo imp
 
 **Tema y color:** los colores son variables CSS. El modo oscuro sigue al dispositivo (`prefers-color-scheme`) o a la preferencia guardada en el perfil (atributo `data-theme`). El color de acento (`--gold`, `--gold-soft`, `--gold-ink`, `--gold-rgb`) es dorado por defecto; `css/accent-celeste.css` lo cambia a celeste cuando `<html>` tiene `data-accent="celeste"`. Ese valor se guarda en `localStorage` (`lgc-accent`) y lo aplica `js/theme-init.js` antes de dibujar. Se elige en *Mi perfil → Apariencia*.
 
+**Resplandor de fondo:** es una capa fija (`body::after` en `css/glass.css`) del tamaño de la pantalla. No hay que atarlo al alto del contenido (`main`): si se hace, termina a mitad de página en las pantallas con poco contenido.
+
 **Vidrio y entrada:** cualquier tarjeta nueva que se quiera con el efecto vidrio se agrega a la lista de selectores de `css/glass.css`. Al entrar (`enterApp`) la dirección se reemplaza por `#inicio`, así que siempre se arranca en Inicio aunque la URL traiga otra pestaña.
 
 **Celular:** por debajo de 800 px el menú pasa abajo (fijo). Las tablas de donaciones, donantes, usuarios y "últimas donaciones" se dibujan como tarjetas con CSS (clases `dl`, `dlt`, `dnr`, `ut`), sin cambiar el HTML de escritorio. Si se agrega o se reordena una columna de esas tablas, hay que ajustar los `nth-child` de `css/mobile.css`.
