@@ -1,0 +1,28 @@
+/* =====================================================================
+   La Gran Casa — color de acento alternativo: CELESTE
+
+   No se usa por defecto. Se activa desde "Mi perfil → Apariencia →
+   Color de acento" (se guarda en el dispositivo) o poniendo
+   data-accent="celeste" en la etiqueta <html>.
+
+   Solo redefine las variables de acento; todo el resto del diseño
+   (theme.css) las usa, así que no hay que tocar nada más.
+   ===================================================================== */
+
+/* Tema claro */
+:root[data-accent="celeste"] {
+  --gold: #12B7D1; --gold-soft: #D3F1F6; --gold-ink: #0B6F80; --gold-rgb: 18, 183, 209;
+  --on-accent: #04141A;
+}
+
+/* Tema oscuro (elegido a mano) */
+:root[data-accent="celeste"][data-theme="dark"] {
+  --gold: #22D3EE; --gold-soft: rgba(34, 211, 238, .16); --gold-ink: #67E8F9; --gold-rgb: 34, 211, 238;
+}
+
+/* Tema oscuro (automático según el dispositivo) */
+@media (prefers-color-scheme: dark) {
+  :root[data-accent="celeste"]:not([data-theme="light"]) {
+    --gold: #22D3EE; --gold-soft: rgba(34, 211, 238, .16); --gold-ink: #67E8F9; --gold-rgb: 34, 211, 238;
+  }
+}

@@ -1,0 +1,17 @@
+# Secretos: nunca se suben al repositorio
+.env
+.env.*
+*.pem
+*.key
+serviceAccount*.json
+*-service-account*.json
+
+# Dependencias y archivos generados
+node_modules/
+*.log
+
+# Archivos del sistema y del editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
