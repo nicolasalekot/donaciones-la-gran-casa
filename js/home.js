@@ -20,7 +20,7 @@ function homeData(){
   const kinds=[...KINDS,'Sin clasificar'].map(k=>({k,t:sum(yr.filter(n=>kindOf(n)==k),n=>n.amount)})).filter(r=>r.t>0);
   const next=S.events.filter(e=>e.status=='Próximo'&&e.date>=iso(now)).sort((a,b)=>a.date.localeCompare(b.date));
   const top=[...S.donors].sort((a,b)=>dTotal(b)-dTotal(a)).slice(0,4);
-  return{y,yr,tot,delta,last6,disp,kinds,next,top,afil:S.donors.filter(d=>d.type=='Afiliado').length};
+  return{y,yr,tot,cm,mname:MESES[mi].toLowerCase(),nmes:yr.filter(n=>+n.date.slice(5,7)==mi+1).length,delta,last6,disp,kinds,next,top,afil:S.donors.filter(d=>d.type=='Afiliado').length};
 }
 
 /* Línea suave para la tarjeta flotante (valores de los últimos meses). */
@@ -40,6 +40,9 @@ const gcard=(k,t,s,vis,foot,cls='')=>`<a class="gc ${cls}" href="#${k}"><div cla
 VIEW.inicio=()=>{
   const h=homeData(),nd=h.yr.length;
   const dlt=h.delta==null?`${nd} ${nd==1?'donación':'donaciones'} en ${h.y}`:`<b class="${h.delta<0?'dn':'up'}">${h.delta<0?'↓':'↑'} ${Math.abs(h.delta)}%</b> respecto al mes anterior`;
+  const ev0=h.next[0],ico=(p)=>`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+  const IC_CAL=ico('<rect x="3.500" y="5" width="17" height="15.500" rx="3"/><path d="M8 3v4M16 3v4M3.500 10h17"/>'),IC_PPL=ico('<circle cx="9" cy="8" r="3.500"/><path d="M2.500 20c.6-3.600 3.100-5.500 6.500-5.500s5.900 1.900 6.500 5.500"/><path d="M16 4.800a3.400 3.400 0 0 1 0 6.400M18.500 14.800c1.600.8 2.600 2.600 3 5.200"/>'),IC_EVT=ico('<path d="M12 3.500l2.600 5.300 5.800.8-4.200 4.100 1 5.800L12 16.800l-5.200 2.700 1-5.800L3.600 9.600l5.800-.8z"/>');
+  const nxt=ev0?`<div class="float-card mini wide m3"><span class="fc-i">${IC_EVT}</span><div><small>Próximo evento · ${fd(ev0.date)}</small><b>${esc(ev0.name)}</b>${ev0.goal?`<div class="bar"><i style="width:${Math.min(100,Math.round((ev0.ing||0)/ev0.goal*100))}%"></i></div><em>${money(ev0.ing||0)} de ${money(ev0.goal)}</em>`:`<em>${esc(ev0.place||'')}</em>`}</div></div>`:'';
   const hero=`<section class="hero">
     <div class="bleed"><i class="b-glow"></i><img class="clef3d" src="img/logo-3d.png" alt="Logo de la Fundación La Gran Casa"></div>
     <div class="hero-txt">
@@ -47,8 +50,12 @@ VIEW.inicio=()=>{
       <div class="hero-b">${can('crear')?'<button class="btn primary big" onclick="editDon()">Registrar donación '+ARROW+'</button>':''}<a class="btn ghost big" href="#panel">Ver el panel</a></div>
     </div>
     <div class="hero-vis" aria-hidden="false">
-      <div class="float-card"><span class="fc-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round"><path d="M20.800 4.600a5.500 5.500 0 0 0-7.800 0L12 5.700l-1-1.100a5.500 5.500 0 0 0-7.800 7.800l1 1.100L12 21l7.800-7.500 1-1.100a5.500 5.500 0 0 0 0-7.800z"/></svg></span>
+      <div class="float-stack"><div class="float-card big"><span class="fc-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round"><path d="M20.800 4.600a5.500 5.500 0 0 0-7.800 0L12 5.700l-1-1.100a5.500 5.500 0 0 0-7.800 7.800l1 1.100L12 21l7.800-7.500 1-1.100a5.500 5.500 0 0 0 0-7.800z"/></svg></span>
         <small>Recaudado en ${h.y}</small><b>${money(h.tot)}</b>${sparkSvg(h.last6.map(x=>x.v))}<em>${dlt}</em></div>
+        <div class="float-card mini m1"><span class="fc-i">${IC_CAL}</span><small>En ${h.mname}</small><b>${money(h.cm)}</b><em>${h.nmes} ${h.nmes==1?'donación':'donaciones'}</em></div>
+        <div class="float-card mini m2"><span class="fc-i">${IC_PPL}</span><small>Donantes</small><b>${S.donors.length}</b><em>${h.afil} ${h.afil==1?'afiliado':'afiliados'}</em></div>
+        ${nxt}
+      </div>
     </div></section>`;
 
   /* ---- tarjetas ---- */
