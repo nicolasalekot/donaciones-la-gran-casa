@@ -6,6 +6,7 @@ Lo usa el equipo que administra las donaciones. No es una página pública: para
 
 ## Qué incluye
 
+- **Inicio:** la primera pantalla al entrar. Título "Fundación La Gran Casa · Sitio web de donaciones" con el logo, y tarjetas de vidrio que llevan a cada sección con datos reales (barras de los últimos meses, donantes, próximo evento, reparto por tipo, total disponible y cuentas pendientes).
 - **Panel principal:** resumen del año, total disponible para usar, donantes y ganancia de eventos.
 - **Donantes:** afiliados y ocasionales, con historial y un estado que se calcula solo (Al día, Pendiente o Inactivo).
 - **Donaciones:** registro con **tipo de donación** (Diezmo, Ofrenda, Ofrenda especial u Otra), filtros y búsqueda.
@@ -24,6 +25,7 @@ Lo usa el equipo que administra las donaciones. No es una página pública: para
 │   ├── style.css              Estilos base (estructura y componentes)
 │   ├── theme.css              Aspecto actual: tarjetas, botones, luces de fondo
 │   ├── accent-celeste.css     Color de acento alternativo (celeste)
+│   ├── home.css               Pantalla de Inicio: título, logo y tarjetas de vidrio
 │   └── mobile.css             Ajustes para celular y tablet (se carga al final)
 ├── js/                        Código, un archivo por tema
 │   ├── theme-init.js          Aplica el color de acento antes de dibujar la página
@@ -32,6 +34,7 @@ Lo usa el equipo que administra las donaciones. No es una página pública: para
 │   ├── seed.js                Datos de ejemplo
 │   ├── core.js                Estado, navegación, filtros y pantallas de consulta
 │   ├── views.js               Panel, estadísticas y resultados de cada consulta
+│   ├── home.js                Pantalla de Inicio (la que se ve al entrar)
 │   ├── ui-kit.js              Ventanas, selector con buscador y formularios
 │   ├── actions.js             Alta, edición y baja de donantes, donaciones y eventos
 │   ├── session.js             Sesión y permisos por rol

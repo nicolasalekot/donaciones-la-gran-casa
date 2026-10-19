@@ -39,6 +39,7 @@ index.html                 Página única: carga estilos y scripts
 css/style.css              Estilos base: estructura y componentes
 css/theme.css              Aspecto actual (capa encima de style.css)
 css/accent-celeste.css     Color de acento alternativo
+css/home.css               Inicio: hero con logo y tarjetas de vidrio (bento). Usa --gold/--gold-rgb, así sigue el color de acento
 css/mobile.css             Celular y tablet (≤800 px): menú inferior, tablas como tarjetas. Va al final
 js/theme-init.js           Aplica el color de acento antes de dibujar (evita parpadeo)
 js/config.js               firebaseConfig
@@ -46,6 +47,7 @@ js/utils.js                Helpers, fechas en hora local, tipos de donación (KI
 js/seed.js                 Datos de ejemplo
 js/core.js                 Estado (S), navegación, filtros, pantallas de consulta
 js/views.js                VIEW (panel, estadísticas…) y RES (resultados de consultas)
+js/home.js               Pantalla de Inicio (VIEW.inicio): cifras reales de S, hero y tarjetas
 js/ui-kit.js               Modales, confirmaciones, selector con buscador, formularios
 js/actions.js              CRUD de donantes, donaciones y eventos; render()
 js/session.js              Estado de sesión y permisos (can / need)
@@ -140,7 +142,7 @@ Se aplican en **dos lugares**: en la pantalla (`can()` oculta botones) y, lo imp
 
 **Sincronización:** el estado vive en el objeto `S` (`donors`, `donations`, `events`). `save()` llama a `fbSave()`, que compara cada documento contra una copia (`shadow`) y escribe solo lo que cambió, en lotes de 400. Los cambios de otros usuarios llegan por `onSnapshot` y se integran con `reconcile()`.
 
-**Pantallas:** se navega con el hash de la URL (`#panel`, `#donantes`, `#donaciones`, `#eventos`, `#estadisticas`, `#usuarios`, `#perfil`). El objeto `VIEW` dibuja cada pantalla; `RES` dibuja los resultados de las consultas con filtros; `ui` guarda el modo (`home`, `filtros`, `resultados`) y los filtros activos.
+**Pantallas:** se navega con el hash de la URL (`#inicio` es la pantalla por defecto, `#panel`, `#donantes`, `#donaciones`, `#eventos`, `#estadisticas`, `#usuarios`, `#perfil`). El objeto `VIEW` dibuja cada pantalla; `RES` dibuja los resultados de las consultas con filtros; `ui` guarda el modo (`home`, `filtros`, `resultados`) y los filtros activos.
 
 **Tema y color:** los colores son variables CSS. El modo oscuro sigue al dispositivo (`prefers-color-scheme`) o a la preferencia guardada en el perfil (atributo `data-theme`). El color de acento (`--gold`, `--gold-soft`, `--gold-ink`, `--gold-rgb`) es dorado por defecto; `css/accent-celeste.css` lo cambia a celeste cuando `<html>` tiene `data-accent="celeste"`. Ese valor se guarda en `localStorage` (`lgc-accent`) y lo aplica `js/theme-init.js` antes de dibujar. Se elige en *Mi perfil → Apariencia*.
 

@@ -18,7 +18,7 @@ let ui;const reset=()=>ui={mode:'home',f:{}};reset();
 const aplicar=()=>{const f=ui.f;if(f.desde&&f.hasta&&f.desde>f.hasta){toast('La fecha "Desde" no puede ser posterior a "Hasta".');return}go('resultados')};
 const go=m=>{ui.mode=m;render();scrollTo(0,0)};
 const navGo=k=>{if(cur()==k){reset();render();scrollTo(0,0)}};
-const cur=()=>{const h=location.hash.slice(1);return VIEW[h]&&(h!='usuarios'||can('usuarios'))?h:'panel'};
+const cur=()=>{const h=location.hash.slice(1);return VIEW[h]&&(h!='usuarios'||can('usuarios'))?h:'inicio'};
 const stat=(l,v,p)=>`<div class="stat"><div class="l">${l}</div><div class="v">${v}</div>${p?`<span class="pill">${p}</span>`:''}</div>`;
 const head=(t,s,a)=>`<div class="top"><div><h1>${t}</h1><p>${s}</p></div><div class="acts">${a}</div></div>`;
 const A0={d:'<button class="btn primary" onclick="editDonor()">+ Nuevo donante</button>',n:'<button class="btn primary" onclick="editDon()">+ Registrar donación</button>',e:'<button class="btn primary" onclick="editEv()">+ Nuevo evento</button>'};

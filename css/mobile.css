@@ -118,3 +118,10 @@
   .bars .col b { font-size: 10px; letter-spacing: -.03em; margin-top: 6px; }
   .bars .bw i span { font-size: 11px; }
 }
+
+/* Con 7 botones (administrador) en pantallas muy angostas, letra más chica para que no se corten */
+@media (max-width: 360px) {
+  header nav#nav { padding-left: 2px; padding-right: 2px; }
+  header nav#nav a { font-size: 9px; letter-spacing: -.02em; padding: 7px 0; }
+  header nav#nav a svg { width: 19px; height: 19px; }
+}
