@@ -39,6 +39,7 @@ index.html                 Página única: carga estilos y scripts
 css/style.css              Estilos base: estructura y componentes
 css/theme.css              Aspecto actual (capa encima de style.css)
 css/accent-celeste.css     Color de acento alternativo
+css/mobile.css             Celular y tablet (≤800 px): menú inferior, tablas como tarjetas. Va al final
 js/theme-init.js           Aplica el color de acento antes de dibujar (evita parpadeo)
 js/config.js               firebaseConfig
 js/utils.js                Helpers, fechas en hora local, tipos de donación (KINDS, kindOf)
@@ -142,6 +143,8 @@ Se aplican en **dos lugares**: en la pantalla (`can()` oculta botones) y, lo imp
 **Pantallas:** se navega con el hash de la URL (`#panel`, `#donantes`, `#donaciones`, `#eventos`, `#estadisticas`, `#usuarios`, `#perfil`). El objeto `VIEW` dibuja cada pantalla; `RES` dibuja los resultados de las consultas con filtros; `ui` guarda el modo (`home`, `filtros`, `resultados`) y los filtros activos.
 
 **Tema y color:** los colores son variables CSS. El modo oscuro sigue al dispositivo (`prefers-color-scheme`) o a la preferencia guardada en el perfil (atributo `data-theme`). El color de acento (`--gold`, `--gold-soft`, `--gold-ink`, `--gold-rgb`) es dorado por defecto; `css/accent-celeste.css` lo cambia a celeste cuando `<html>` tiene `data-accent="celeste"`. Ese valor se guarda en `localStorage` (`lgc-accent`) y lo aplica `js/theme-init.js` antes de dibujar. Se elige en *Mi perfil → Apariencia*.
+
+**Celular:** por debajo de 800 px el menú pasa abajo (fijo). Las tablas de donaciones, donantes, usuarios y "últimas donaciones" se dibujan como tarjetas con CSS (clases `dl`, `dlt`, `dnr`, `ut`), sin cambiar el HTML de escritorio. Si se agrega o se reordena una columna de esas tablas, hay que ajustar los `nth-child` de `css/mobile.css`.
 
 **Logo:** `img/logo.png`. Se reutiliza en la pantalla de acceso, la marca de agua, el ícono para iPhone y el manifiesto de la app instalable; estos dos últimos se generan al cargar.
 

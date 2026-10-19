@@ -13,6 +13,7 @@ Lo usa el equipo que administra las donaciones. No es una página pública: para
 - **Estadísticas:** ingresos por mes, por origen, por tipo de donante y por tipo de donación, y los donantes más constantes.
 - **Usuarios y roles:** Administrador, Editor y Consulta, con aprobación manual de las cuentas nuevas.
 - **Apariencia:** tema claro u oscuro, y color de acento dorado (por defecto) o celeste.
+- **Celular:** menú inferior, listas en forma de tarjetas y formularios a ancho completo (probado desde 320 px hasta tablet).
 
 ## Estructura del proyecto
 
@@ -22,7 +23,8 @@ Lo usa el equipo que administra las donaciones. No es una página pública: para
 ├── css/
 │   ├── style.css              Estilos base (estructura y componentes)
 │   ├── theme.css              Aspecto actual: tarjetas, botones, luces de fondo
-│   └── accent-celeste.css     Color de acento alternativo (celeste)
+│   ├── accent-celeste.css     Color de acento alternativo (celeste)
+│   └── mobile.css             Ajustes para celular y tablet (se carga al final)
 ├── js/                        Código, un archivo por tema
 │   ├── theme-init.js          Aplica el color de acento antes de dibujar la página
 │   ├── config.js              Configuración de Firebase
