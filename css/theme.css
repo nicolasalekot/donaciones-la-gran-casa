@@ -161,3 +161,22 @@ header { border-bottom: 1px solid rgba(255, 255, 255, .06); }
   .brand b { font-size: 18px; }
   header nav#nav a { padding: 9px 5px; font-size: 13.5px; }
 }
+
+/* ---- Menú superior con 7 pestañas (administrador): que siempre entre ---- */
+@media (min-width: 801px) {
+  .nx { display: none; }
+  header nav#nav { overflow-x: auto; scrollbar-width: none; justify-content: flex-start; }
+  header nav#nav::-webkit-scrollbar { display: none; }
+  header nav#nav { justify-content: center; }
+  .mep > div { display: none; }
+}
+@media (min-width: 1500px) { .mep > div { display: block; } }
+@media (min-width: 801px) and (max-width: 860px) {
+  header nav#nav a { padding: 9px 3px; font-size: 12.5px; }
+}
+@media (min-width: 901px) and (max-width: 1040px) {
+  header nav#nav a { padding: 9px 6px; font-size: 13.5px; }
+}
+@media (min-width: 1181px) and (max-width: 1240px) { header nav#nav a svg { display: none; } }
+@media (min-width: 901px) and (max-width: 1000px) { header nav#nav a { padding: 9px 4px; font-size: 13px; } }
+@media (min-width: 801px) and (max-width: 840px) { header nav#nav a { padding: 9px 2px; font-size: 12px; } .brand b { font-size: 17px; } .brand-logo { height: 36px; } }

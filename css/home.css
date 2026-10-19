@@ -3,44 +3,12 @@
    Usa el color de acento (--gold, --gold-rgb): cambia solo con el celeste.
    ===================================================================== */
 
-/* ---- Valores del vidrio (claro por defecto; oscuro más abajo) ---- */
-:root {
-  --gl-a: rgba(255, 255, 255, .80); --gl-b: rgba(255, 255, 255, .44); --gl-bd: rgba(255, 255, 255, .95);
-  --gl-sh: 0 18px 44px rgba(var(--gold-rgb), .16); --gl-hi: rgba(255, 255, 255, .95);
-  --gl-dot: rgba(var(--gold-rgb), .16); --gl-ring: #F6EFDF; --gl-track: rgba(0, 0, 0, .08);
-  --gl-glow: .38; --hg-a: #8F6410; --hg-b: var(--gold); --hg-c: #7A520C;
-}
-:root[data-theme="dark"] {
-  --gl-a: rgba(255, 255, 255, .085); --gl-b: rgba(255, 255, 255, .014); --gl-bd: rgba(255, 255, 255, .12);
-  --gl-sh: 0 26px 60px rgba(0, 0, 0, .45); --gl-hi: rgba(255, 255, 255, .17);
-  --gl-dot: rgba(255, 255, 255, .24); --gl-ring: #14151D; --gl-track: rgba(255, 255, 255, .1);
-  --gl-glow: .62; --hg-a: color-mix(in srgb, var(--gold) 45%, #fff); --hg-b: var(--gold); --hg-c: color-mix(in srgb, var(--gold) 68%, #000);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --gl-a: rgba(255, 255, 255, .085); --gl-b: rgba(255, 255, 255, .014); --gl-bd: rgba(255, 255, 255, .12);
-    --gl-sh: 0 26px 60px rgba(0, 0, 0, .45); --gl-hi: rgba(255, 255, 255, .17);
-    --gl-dot: rgba(255, 255, 255, .24); --gl-ring: #14151D; --gl-track: rgba(255, 255, 255, .1);
-    --gl-glow: .62; --hg-a: color-mix(in srgb, var(--gold) 45%, #fff); --hg-b: var(--gold); --hg-c: color-mix(in srgb, var(--gold) 68%, #000);
-  }
-}
-
 @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 @keyframes morph {
   0%   { border-radius: 62% 38% 55% 45% / 48% 60% 40% 52%; transform: rotate(0) scale(1); }
   100% { border-radius: 40% 60% 45% 55% / 58% 42% 58% 42%; transform: rotate(40deg) scale(1.07); }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-
-.home { position: relative; isolation: isolate; }
-body { overflow-x: clip; }
-.home::before {
-  content: ""; position: absolute; top: -60px; bottom: -60px; left: 50%; width: 100vw; transform: translateX(-50%); z-index: -1; pointer-events: none;
-  background:
-    radial-gradient(520px 420px at 82% 8%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .42)), transparent 70%),
-    radial-gradient(620px 460px at 8% 62%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .3)), transparent 70%),
-    radial-gradient(560px 420px at 90% 92%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .3)), transparent 70%);
-}
 
 /* ---- Hero ---- */
 .hero { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); align-items: center; gap: 24px; min-height: 540px; padding: 26px 0 10px; }

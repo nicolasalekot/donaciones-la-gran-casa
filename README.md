@@ -13,6 +13,7 @@ Lo usa el equipo que administra las donaciones. No es una página pública: para
 - **Eventos de recaudación:** metas, ingresos, egresos y entradas vendidas.
 - **Estadísticas:** ingresos por mes, por origen, por tipo de donante y por tipo de donación, y los donantes más constantes.
 - **Usuarios y roles:** Administrador, Editor y Consulta, con aprobación manual de las cuentas nuevas.
+- **Efecto vidrio:** todas las tarjetas, ventanas y la pantalla de ingreso comparten el mismo estilo translúcido (`css/glass.css`). Siempre se entra por **Inicio**.
 - **Apariencia:** tema claro u oscuro, y color de acento dorado (por defecto) o celeste.
 - **Celular:** menú inferior, listas en forma de tarjetas y formularios a ancho completo (probado desde 320 px hasta tablet).
 
@@ -25,6 +26,7 @@ Lo usa el equipo que administra las donaciones. No es una página pública: para
 │   ├── style.css              Estilos base (estructura y componentes)
 │   ├── theme.css              Aspecto actual: tarjetas, botones, luces de fondo
 │   ├── accent-celeste.css     Color de acento alternativo (celeste)
+│   ├── glass.css              Efecto vidrio compartido por todas las tarjetas y ventanas
 │   ├── home.css               Pantalla de Inicio: título, logo y tarjetas de vidrio
 │   └── mobile.css             Ajustes para celular y tablet (se carga al final)
 ├── js/                        Código, un archivo por tema

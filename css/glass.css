@@ -1,0 +1,92 @@
+/* =====================================================================
+   Vidrio: el mismo efecto en TODAS las tarjetas de TODAS las pestañas.
+   - Valores (--gl-*) para tema claro y oscuro.
+   - Resplandor de fondo en cada pantalla (para que el vidrio tenga algo que difuminar).
+   - Tarjetas, ventanas y pantalla de ingreso con fondo translúcido.
+   Usa --gold-rgb, por eso sigue el color de acento (dorado o celeste).
+   Se carga después de theme.css y antes de home.css y mobile.css.
+   ===================================================================== */
+
+/* ---- Valores del vidrio (claro por defecto; oscuro más abajo) ---- */
+:root {
+  --gl-a: rgba(255, 255, 255, .80); --gl-b: rgba(255, 255, 255, .44); --gl-bd: rgba(255, 255, 255, .95);
+  --gl-sh: 0 18px 44px rgba(var(--gold-rgb), .16); --gl-hi: rgba(255, 255, 255, .95);
+  --gl-dot: rgba(var(--gold-rgb), .16); --gl-ring: #F6EFDF; --gl-track: rgba(0, 0, 0, .08);
+  --gl-glow: .38; --hg-a: #8F6410; --hg-b: var(--gold); --hg-c: #7A520C;
+}
+:root[data-theme="dark"] {
+  --gl-a: rgba(255, 255, 255, .085); --gl-b: rgba(255, 255, 255, .014); --gl-bd: rgba(255, 255, 255, .12);
+  --gl-sh: 0 26px 60px rgba(0, 0, 0, .45); --gl-hi: rgba(255, 255, 255, .17);
+  --gl-dot: rgba(255, 255, 255, .24); --gl-ring: #14151D; --gl-track: rgba(255, 255, 255, .1);
+  --gl-glow: .62; --hg-a: color-mix(in srgb, var(--gold) 45%, #fff); --hg-b: var(--gold); --hg-c: color-mix(in srgb, var(--gold) 68%, #000);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --gl-a: rgba(255, 255, 255, .085); --gl-b: rgba(255, 255, 255, .014); --gl-bd: rgba(255, 255, 255, .12);
+    --gl-sh: 0 26px 60px rgba(0, 0, 0, .45); --gl-hi: rgba(255, 255, 255, .17);
+    --gl-dot: rgba(255, 255, 255, .24); --gl-ring: #14151D; --gl-track: rgba(255, 255, 255, .1);
+    --gl-glow: .62; --hg-a: color-mix(in srgb, var(--gold) 45%, #fff); --hg-b: var(--gold); --hg-c: color-mix(in srgb, var(--gold) 68%, #000);
+  }
+}
+
+
+body { overflow-x: clip; }
+
+/* ---- Resplandor detrás del contenido de cada pantalla ---- */
+main { position: relative; isolation: isolate; }
+main::before {
+  content: ""; position: absolute; top: -40px; bottom: -40px; left: 50%; width: 100vw; transform: translateX(-50%);
+  z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(520px 420px at 84% 0%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .4)), transparent 70%),
+    radial-gradient(620px 460px at 6% 38%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .28)), transparent 70%),
+    radial-gradient(560px 420px at 92% 72%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .28)), transparent 70%),
+    radial-gradient(520px 400px at 10% 100%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .26)), transparent 70%);
+}
+
+/* ---- Tarjetas de vidrio (todas las pestañas) ---- */
+.stat, .panel, .ev, .choice, .filt {
+  background:
+    radial-gradient(75% 95% at 100% 125%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .5)), transparent 72%),
+    linear-gradient(150deg, var(--gl-a), var(--gl-b));
+  border: 1px solid var(--gl-bd);
+  border-radius: 24px;
+  box-shadow: var(--gl-sh), inset 0 1px 0 var(--gl-hi);
+  backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3);
+}
+.stat:hover, .panel:hover, .ev:hover, .choice:hover, .filt:hover {
+  border-color: rgba(var(--gold-rgb), .55);
+  box-shadow: 0 24px 56px rgba(var(--gold-rgb), .24), inset 0 1px 0 var(--gl-hi);
+}
+.panel:hover, .filt:hover { transform: none; }
+.ev, .choice { border-radius: 24px; }
+.stat .pill, .panel .pill { backdrop-filter: none; }
+
+/* Filas de tablas y barras dentro del vidrio */
+.panel tr, .panel th, .panel td { border-color: rgba(var(--gold-rgb), .14); }
+.hb .t, .bar { background: var(--gl-track); }
+.donut div { background: color-mix(in srgb, var(--card) 70%, transparent); }
+
+/* ---- Ventanas ---- */
+dialog {
+  background:
+    radial-gradient(75% 60% at 100% 120%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .4)), transparent 72%),
+    color-mix(in srgb, var(--card) 80%, transparent);
+  border: 1px solid var(--gl-bd);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .5), inset 0 1px 0 var(--gl-hi);
+  backdrop-filter: blur(26px) saturate(1.3); -webkit-backdrop-filter: blur(26px) saturate(1.3);
+}
+
+/* ---- Pantalla de ingreso y registro ---- */
+.acard {
+  background:
+    radial-gradient(75% 55% at 100% 125%, rgba(var(--gold-rgb), calc(var(--gl-glow) * .5)), transparent 72%),
+    linear-gradient(150deg, var(--gl-a), var(--gl-b));
+  border: 1px solid var(--gl-bd);
+  box-shadow: var(--gl-sh), inset 0 1px 0 var(--gl-hi);
+  backdrop-filter: blur(22px) saturate(1.3); -webkit-backdrop-filter: blur(22px) saturate(1.3);
+}
+
+@media (max-width: 800px) {
+  .stat, .panel, .ev, .choice, .filt { border-radius: 22px; backdrop-filter: blur(14px) saturate(1.25); -webkit-backdrop-filter: blur(14px) saturate(1.25); }
+}

@@ -82,6 +82,7 @@
   .dnr .pp > div { overflow: hidden; overflow-wrap: normal; }
   .dnr .pp small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .dnr td:nth-child(4) { text-align: left; }
+  .ut td.r { margin-left: 0; text-align: left; }
   .dlt td:nth-child(7) .btn, .dlt td:nth-child(7) button { padding: 5px 12px; font-size: 13px; opacity: .85; }
 
   /* Filtros: los dos botones parejos */
