@@ -46,7 +46,7 @@ VIEW.inicio=()=>{
   const hero=`<section class="hero">
     <div class="bleed"><i class="b-glow"></i><img class="clef3d" src="img/logo-3d.png" alt="Logo de la Fundación La Gran Casa"></div>
     <div class="hero-txt">
-      <h1 class="hero-t"><span>Fundación</span><span class="gold">La Gran Casa</span><small>Sitio web de donaciones</small></h1>
+      <h1 class="hero-t"><span>Fundación</span><span class="gold">La Gran Casa</span><small>Sitio web de gestión de donaciones</small></h1>
       <div class="hero-b">${can('crear')?'<button class="btn primary big" onclick="editDon()">Registrar donación '+ARROW+'</button>':''}<a class="btn ghost big" href="#panel">Ver el panel</a></div>
     </div>
     <div class="hero-vis" aria-hidden="false">
