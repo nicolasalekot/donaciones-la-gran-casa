@@ -37,14 +37,15 @@
 :root[data-accent="celeste"] .clef3d { filter: hue-rotate(172deg) saturate(1.1) drop-shadow(-26px 34px 36px rgba(0,0,0,.45)) drop-shadow(0 0 40px rgba(var(--gold-rgb), .35)); }
 .float-card {
   position: absolute; left: -12%; bottom: -3%; width: min(236px, 56%); padding: 16px 18px 14px; border-radius: 22px;
-  background: #FBF7EC; color: #17140C; box-shadow: 0 26px 60px rgba(0, 0, 0, .4), 0 0 0 1px rgba(255, 255, 255, .6) inset;
+  background: linear-gradient(150deg, var(--gl-a), var(--gl-b)); color: var(--ink); border: 1px solid var(--gl-bd); box-shadow: var(--gl-sh), inset 0 1px 0 var(--gl-hi);
+  backdrop-filter: blur(20px) saturate(1.35); -webkit-backdrop-filter: blur(20px) saturate(1.35);
   animation: floaty 6.5s ease-in-out infinite .8s;
 }
-.float-card .fc-i { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; margin-bottom: 10px; background: rgba(var(--gold-rgb), .18); color: #8A5F0E; }
-.float-card small { display: block; font-size: 12.5px; color: #6F6A5C; }
+.float-card .fc-i { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; margin-bottom: 10px; background: rgba(var(--gold-rgb), .18); color: var(--gold); }
+.float-card small { display: block; font-size: 12.5px; color: var(--ink-soft); }
 .float-card b { display: block; font: 700 30px/1.15 var(--font-head); letter-spacing: -.02em; margin: 2px 0 4px; }
 .float-card .spark { display: block; width: 100%; height: 54px; margin: 2px 0 6px; }
-.float-card em { font-style: normal; font-size: 12.5px; color: #6F6A5C; }
+.float-card em { font-style: normal; font-size: 12.5px; color: var(--ink-soft); }
 .float-card em b { display: inline; font: 600 12.5px var(--font-body); letter-spacing: 0; margin: 0; }
 .float-card .up { color: #2A8F64; } .float-card .dn { color: #C8553A; }
 
@@ -129,7 +130,7 @@
 /* ---- Tablet ---- */
 @media (max-width: 1000px) {
   .hero { min-height: 460px; }
-  .float-card { left: 8%; }
+  .float-card { left: 2%; }
   .c4, .c5, .c7 { grid-column: span 6; }
   .c4:nth-child(3) { grid-column: span 12; min-height: 0; }
 }
@@ -142,7 +143,7 @@
   .hero-vis { min-height: 0; padding: 14px 0 6px; }
   .bleed { top: auto; bottom: -4%; height: 52%; width: 60vw; }
   .clef3d { height: 120%; right: -16%; }
-  .float-card { position: relative; left: auto; bottom: auto; width: min(250px, 66%); margin: 22px 0 0; }
+  .float-card { position: relative; left: auto; bottom: auto; width: min(300px, 92%); margin: 22px auto 0; }
   .bento-h { margin: 46px 0 22px; }
   .bento { gap: 14px; }
   .c4, .c5, .c7, .c12, .c4:nth-child(3) { grid-column: span 12; }
