@@ -18,7 +18,7 @@ if(prof.role=='admin')unsubs.push(fb.onSnapshot(fb.collection(fb.db,'users'),sna
 function dataTick(){if(!appReady){if(COLS.every(c=>loaded[c])){appReady=true;enterApp()}}else softRender();if(migr&&appReady&&can('editar')){migr=false;save()}}
 function enterApp(){document.body.classList.remove('locked');$('#auth').innerHTML='';fillChip(prof);applyTheme(prof.theme);reset();render();scrollTo(0,0);if(greet){toast('¡Hola, '+prof.name.split(/\s+/)[0]+'!');greet=false}}
 function showBlocked(){const p=prof.pending;showCard(p?'Cuenta pendiente de aprobación':'Cuenta desactivada',`<p class="as">${p?'Tu cuenta fue creada. Un administrador tiene que aprobarla para que puedas entrar. Cuando lo haga, esta pantalla pasa sola a la página.':'Tu cuenta está desactivada. Consultá con un administrador.'}</p><p class="as">${esc(prof.email)}</p>`,1)}
-function authFail(e){const c=(e&&e.code)||'';let m='No se pudo conectar con la base de datos.';
+function authFail(e){if(deleting)return;/* al eliminar la cuenta es normal que las lecturas dejen de tener permiso */const c=(e&&e.code)||'';let m='No se pudo conectar con la base de datos.';
 if(/permission/.test(c))m='No hay permiso para leer los datos. Puede que las reglas de seguridad de Firestore todavía no estén publicadas (ver LEEME.txt).';
 else if(c=='profile-missing')m='No se encontró tu perfil de usuario. Cerrá sesión y volvé a entrar.';
 else if(/unavailable|network/.test(c))m='Sin conexión con Firebase. Revisá tu internet.';
