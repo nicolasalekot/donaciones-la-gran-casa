@@ -31,9 +31,9 @@
 .bleed { overflow-x: clip; overflow-y: visible; position: absolute; z-index: 0; top: -6%; bottom: -6%; right: calc(50% - 50vw); width: min(52vw, 760px); pointer-events: none; }
 .b-glow { position: absolute; inset: 8% -10% 8% 4%; border-radius: 50%; filter: blur(70px); opacity: calc(var(--gl-glow) + .1);
   background: radial-gradient(closest-side, rgba(var(--gold-rgb), .85), rgba(var(--gold-rgb), .2) 60%, transparent); animation: morph 14s ease-in-out infinite alternate; }
-.clef3d { position: absolute; top: 50%; right: -4%; height: 112%; width: auto; transform: translateY(-50%) rotate(16deg); transform-origin: 50% 50%;
+.clef3d { position: absolute; top: 50%; right: 5%; height: 100%; width: auto; transform: translateY(-50%) rotate(12deg); transform-origin: 50% 50%;
   filter: drop-shadow(-26px 34px 36px rgba(0,0,0,.45)) drop-shadow(0 0 40px rgba(var(--gold-rgb), .35)); animation: clef 9s ease-in-out infinite; }
-@keyframes clef { 0%, 100% { transform: translateY(-50%) rotate(16deg); } 50% { transform: translateY(calc(-50% - 12px)) rotate(13deg); } }
+@keyframes clef { 0%, 100% { transform: translateY(-50%) rotate(12deg); } 50% { transform: translateY(calc(-50% - 12px)) rotate(9deg); } }
 :root[data-accent="celeste"] .clef3d { filter: hue-rotate(172deg) saturate(1.1) drop-shadow(-26px 34px 36px rgba(0,0,0,.45)) drop-shadow(0 0 40px rgba(var(--gold-rgb), .35)); }
 .float-card {
   position: absolute; left: -12%; bottom: -3%; width: min(236px, 56%); padding: 16px 18px 14px; border-radius: 22px;
@@ -141,9 +141,10 @@
   .hero-b { gap: 10px; }
   .hero-b .btn { flex: 1 1 100%; }
   .hero-vis { min-height: 0; padding: 14px 0 6px; }
-  .bleed { top: auto; bottom: -4%; height: 52%; width: 60vw; }
-  .clef3d { height: 120%; right: -16%; }
-  .float-card { position: relative; left: auto; bottom: auto; width: min(300px, 92%); margin: 22px auto 0; }
+  .hero-vis { min-height: 400px; align-items: end; justify-items: start; }
+  .bleed { top: auto; bottom: 0; height: 400px; width: 62vw; }
+  .clef3d { height: 112%; right: -10%; }
+  .float-card { position: relative; left: auto; bottom: auto; width: min(210px, 54%); margin: 22px 0 0; }
   .bento-h { margin: 46px 0 22px; }
   .bento { gap: 14px; }
   .c4, .c5, .c7, .c12, .c4:nth-child(3) { grid-column: span 12; }
