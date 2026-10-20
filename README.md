@@ -37,6 +37,7 @@ Lo usa el equipo que administra las donaciones. No es una página pública: para
 │   ├── core.js                Estado, navegación, filtros y pantallas de consulta
 │   ├── views.js               Panel, estadísticas y resultados de cada consulta
 │   ├── home.js                Pantalla de Inicio (la que se ve al entrar)
+│   ├── recents.js             Últimos registros bajo Nuevo/Consulta (Donantes, Donaciones, Eventos)
 │   ├── ui-kit.js              Ventanas, selector con buscador y formularios
 │   ├── actions.js             Alta, edición y baja de donantes, donaciones y eventos
 │   ├── session.js             Sesión y permisos por rol

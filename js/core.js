@@ -40,4 +40,4 @@ const A={get d(){return can('crear')?A0.d:''},get n(){return can('crear')?A0.n:'
 const sect=c=>{const x=TX[c];
 if(ui.mode=='filtros')return head(x.t,x.fs,`<button class="btn" onclick="go('home')">← Volver</button>`)+`<div class="filt" onkeydown="if(event.key==='Enter'&&event.target.tagName==='INPUT'){event.preventDefault();aplicar()}">${filt(c).map(ffld).join('')}<div class="fb"><button type="button" class="btn" onclick="ui.f={};render()">Limpiar</button><button type="button" class="btn primary" onclick="aplicar()">Filtrar</button></div></div>`;
 if(ui.mode=='resultados')return head(x.t,'Resultados de tu consulta',`<button class="btn" onclick="go('filtros')">Cambiar filtros</button>${can('crear')?`<button class="btn primary" onclick="${x.n}">+ Nuevo</button>`:''}`)+summ(c)+RES[c]();
-return head(x.t,x.s,'')+`<div class="choices">${can('crear')?choice('plus','Nuevo',x.nd,x.n):''}${choice('search','Consulta',x.cd,"go('filtros')")}</div>`};
+return head(x.t,x.s,'')+`<div class="choices">${can('crear')?choice('plus','Nuevo',x.nd,x.n):''}${choice('search','Consulta',x.cd,"go('filtros')")}</div>${typeof recentBlock=='function'?recentBlock(c):''}`};

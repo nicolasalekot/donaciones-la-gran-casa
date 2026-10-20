@@ -173,3 +173,12 @@
 
 /* En Inicio la marca de agua de fondo sobra: el logo ya es protagonista */
 body[data-v="inicio"] .wm { display: none; }
+
+/* ---- Recientes bajo "Nuevo" y "Consulta" ---- */
+.recent { margin-top: 38px; animation: rise .6s .1s cubic-bezier(.2, .8, .2, 1) backwards; }
+.rc-h { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+.rc-h h2 { margin: 0; font: 700 22px/1.2 var(--font-head); letter-spacing: -.02em; }
+.rc-h p { margin: 4px 0 0; font-size: 14px; color: var(--ink-soft); }
+.recent .panel { margin-top: 0; }
+.rc-h .btn { white-space: nowrap; flex: none; }
+@media (max-width: 720px) { .rc-h { align-items: flex-start; } .rc-h h2 { font-size: 20px; } }
