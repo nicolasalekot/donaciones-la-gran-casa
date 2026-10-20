@@ -4,7 +4,7 @@
 const RECENT_CFG={
   donantes:{n:5,ord:'rec',t:'Donantes recientes',s:'Los que donaron últimamente',has:()=>S.donors.length},
   donaciones:{n:6,ord:'rec',t:'Últimas donaciones',s:'Lo que ingresó más recientemente',has:()=>S.donations.length},
-  eventos:{n:3,ord:'prox',t:'Próximos eventos',s:'Primero los más cercanos en fecha',has:()=>S.events.length}
+  eventos:{n:3,ord:'prox',t:'Eventos cercanos',s:'Primero los más próximos en fecha',has:()=>S.events.length}
 };
 
 function recentBlock(c){
