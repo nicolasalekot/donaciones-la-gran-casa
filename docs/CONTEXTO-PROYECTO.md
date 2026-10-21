@@ -50,6 +50,7 @@ js/core.js                 Estado (S), navegación, filtros, pantallas de consul
 js/views.js                VIEW (panel, estadísticas…) y RES (resultados de consultas)
 js/home.js               Pantalla de Inicio (VIEW.inicio): cifras reales de S, hero y tarjetas
 js/recents.js            Bloque de "recientes" bajo Nuevo/Consulta en Donantes, Donaciones y Eventos
+js/backup.js              Copia de seguridad para el administrador (JSON completo y CSV de donaciones)
 js/ui-kit.js               Modales, confirmaciones, selector con buscador, formularios
 js/actions.js              CRUD de donantes, donaciones y eventos; render()
 js/session.js              Estado de sesión y permisos (can / need)
