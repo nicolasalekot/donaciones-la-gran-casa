@@ -6,5 +6,5 @@ const FB_VER='12.13.0',FBU=n=>`https://www.gstatic.com/firebasejs/${FB_VER}/fire
    Pegá acá la "clave del sitio" que registraste en Firebase > App Check. Es pública (no es un secreto).
    Mientras esté vacía, App Check queda apagado y todo funciona como siempre.
    APPCHECK_PROVIDER: 'enterprise' (Fraud Defense / reCAPTCHA Enterprise, el actual) o 'v3' (reCAPTCHA clásico, en desuso). */
-const APPCHECK_SITE_KEY='';
+const APPCHECK_SITE_KEY='6LeQefotAAAAADTGpYq77O5WL74l-S15f9EpjlBJ';
 const APPCHECK_PROVIDER='enterprise';
