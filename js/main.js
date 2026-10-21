@@ -1,5 +1,7 @@
 /* Arranque: carga Firebase, escucha la navegación y muestra la app. */
-async function loadFB(){const[A,Au,Fs]=await Promise.all(['app','auth','firestore'].map(n=>import(FBU(n))));const app=A.initializeApp(firebaseConfig);const auth=Au.getAuth(app);try{await Au.setPersistence(auth,Au.browserSessionPersistence)}catch(e){}fb={...Au,...Fs,auth,db:Fs.getFirestore(app)}}
+async function loadFB(){const[A,Au,Fs]=await Promise.all(['app','auth','firestore'].map(n=>import(FBU(n))));const app=A.initializeApp(firebaseConfig);
+  if(typeof APPCHECK_SITE_KEY=='string'&&APPCHECK_SITE_KEY){try{const AC=await import(FBU('app-check'));AC.initializeAppCheck(app,{provider:new AC.ReCaptchaV3Provider(APPCHECK_SITE_KEY),isTokenAutoRefreshEnabled:true})}catch(e){console.warn('App Check no se pudo iniciar:',e)}}
+  const auth=Au.getAuth(app);try{await Au.setPersistence(auth,Au.browserSessionPersistence)}catch(e){}fb={...Au,...Fs,auth,db:Fs.getFirestore(app)}}
 addEventListener('hashchange',()=>{if(!appReady)return;reset();render();scrollTo(0,0)});
 async function boot(){showLoading('Conectando…');try{await loadFB()}catch(e){showCard('No se pudo conectar con Firebase','<p class="as">No se pudieron cargar los servicios de Firebase. Revisá tu conexión a internet y abrí la página desde una dirección web (por ejemplo http://localhost:8000), no como archivo suelto.</p>',2);return}startAuth()}
 (()=>{const i=document.querySelector('.brand img');if(i){const w=document.createElement('img');w.className='wm';w.alt='';w.setAttribute('aria-hidden','true');w.src=i.src;document.body.appendChild(w)}})();
