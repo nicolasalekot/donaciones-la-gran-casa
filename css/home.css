@@ -183,3 +183,6 @@ body[data-v="inicio"] .wm { display: none; }
 .rc-h .btn { white-space: nowrap; flex: none; }
 @media (max-width: 720px) { .rc-h { align-items: flex-start; } .rc-h h2 { font-size: 20px; } }
 .choices { max-width: none; }
+
+/* Vacíos: el logo de la fundación en lugar de la nota musical */
+.empty::before { content: ""; width: 76px; height: 76px; background: url("../img/logo.png") center / auto 74% no-repeat, var(--hover); }
