@@ -63,7 +63,7 @@
 .float-card .up { color: #2A8F64; } .float-card .dn { color: #C8553A; }
 
 /* ---- Título de la sección de tarjetas ---- */
-.bento-h { text-align: center; margin: 70px 0 30px; }
+.bento-h { text-align: center; margin: 4px 0 30px; }
 .bento-h h2 { margin: 0; font: 600 clamp(28px, 4.2vw, 46px)/1.16 var(--font-head); letter-spacing: -.02em; }
 .bento-h .gold { display: inline-block; }
 .bento-h .chip {
@@ -163,7 +163,7 @@
   .float-card.mini { padding: 11px 12px 10px; }
   .float-card.mini b { font-size: 17px; }
   .float-stack .float-card.mini.wide.m3 { display: none; }
-  .bento-h { margin: 46px 0 22px; }
+  .bento-h { margin: 2px 0 22px; }
   .bento { gap: 14px; }
   .c4, .c5, .c7, .c12, .c4:nth-child(3) { grid-column: span 12; }
   .gc { min-height: 0; border-radius: 24px; padding: 22px 20px 18px; }
