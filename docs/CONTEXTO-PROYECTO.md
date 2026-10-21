@@ -48,7 +48,7 @@ js/utils.js                Helpers, fechas en hora local, tipos de donación (KI
 js/seed.js                 Datos de ejemplo
 js/core.js                 Estado (S), navegación, filtros, pantallas de consulta
 js/views.js                VIEW (panel, estadísticas…) y RES (resultados de consultas)
-js/home.js               Pantalla de Inicio (VIEW.inicio): cifras reales de S, hero y tarjetas
+js/home.js               Inicio (VIEW.inicio: hero y cifras) y Panel principal (VIEW.panel: tarjetas "¿Qué querés hacer hoy?")
 js/recents.js            Bloque de "recientes" bajo Nuevo/Consulta en Donantes, Donaciones y Eventos
 js/backup.js              Copia de seguridad para el administrador (JSON completo y CSV de donaciones)
 js/ui-kit.js               Modales, confirmaciones, selector con buscador, formularios

@@ -6,7 +6,8 @@ Lo usa el equipo que administra las donaciones. No es una página pública: para
 
 ## Qué incluye
 
-- **Inicio:** la primera pantalla al entrar. Título "Fundación La Gran Casa · Sitio web de gestión de donaciones" con el logo, y tarjetas de vidrio que llevan a cada sección con datos reales (barras de los últimos meses, donantes, próximo evento, reparto por tipo, total disponible y cuentas pendientes).
+- **Inicio:** la primera pantalla al entrar. Título "Fundación La Gran Casa · Sitio web de gestión de donaciones" con el logo en 3D y tarjetas con las cifras clave (recaudado, mes actual, donantes, próximo evento).
+- **Panel:** "¿Qué querés hacer hoy?" con tarjetas de vidrio que llevan a cada sección con datos reales (barras de los últimos meses, donantes, próximo evento, reparto por tipo, total disponible y cuentas pendientes).
 - **Panel principal:** resumen del año, total disponible para usar, donantes y ganancia de eventos.
 - **Donantes:** afiliados y ocasionales, con historial y un estado que se calcula solo (Al día, Pendiente o Inactivo).
 - **Donaciones:** registro con **tipo de donación** (Diezmo, Ofrenda, Ofrenda especial u Otra), filtros y búsqueda.

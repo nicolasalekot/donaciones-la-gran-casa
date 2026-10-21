@@ -1,11 +1,5 @@
-/* Pantallas: panel principal, estadísticas y resultados de cada consulta. */
+/* Pantallas: estadísticas y resultados de cada consulta. (El panel principal está en home.js.) */
 const VIEW={
-panel(){const nx=S.events.filter(e=>e.status=='Próximo').sort((a,b)=>a.date.localeCompare(b.date)),fin=S.events.filter(e=>e.status=='Finalizado');
-const yr=String(new Date().getFullYear()),yrL=S.donations.filter(n=>n.date.slice(0,4)==yr),tot=sum(S.donations,n=>n.amount),ap=sum(S.donations.filter(n=>n.origin=='Evento'),n=>n.amount);
-const last=[...S.donations].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,6);
-return head('Panel principal','Resumen de la fundación',A.d+A.n+A.e)+`<div class="stats">${stat('Total recaudado este año',money(sum(yrL,n=>n.amount)),yrL.length+' donaciones en '+yr)}${stat('Total disponible para usar',money(tot-ap))}${stat('Donantes',S.donors.length,sum(S.donors,d=>d.type=='Afiliado')+' afiliados')}${stat('Ganancia neta en eventos',money(sum(fin,e=>e.ing-e.egr)),fin.length+' finalizados')}</div>
-<div class="two"><div class="panel"><h3>Últimas donaciones</h3>${last.length?`<table class="dl"><tbody>${last.map(n=>`<tr><td>${fd(n.date)}</td><td>${esc(who(n))}</td><td>${esc(n.concept)}<small style="display:block;color:var(--ink-soft)">${esc(kindOf(n))}</small></td><td class="r n pos">${money(n.amount)}</td></tr>`).join('')}</tbody></table>`:'<div class="empty">Todavía no hay donaciones. Registrá la primera.</div>'}</div>
-<div class="panel"><h3>Próximos eventos</h3>${nx.length?`<table style="min-width:0"><tbody>${nx.map(e=>`<tr class="row" onclick="openEv('${e.id}')"><td><b>${esc(e.name)}</b><small style="display:block;color:var(--ink-soft)">${esc(e.place)}</small></td><td class="r">${fd(e.date)}</td></tr>`).join('')}</tbody></table>`:'<div class="empty">No hay eventos programados.</div>'}</div></div>`},
 estadisticas(){const ty=n=>{const d=n.donorId&&donor(n.donorId);return d?d.type:'Anónimo'},now=new Date(),Y=ui.f.anio||String(now.getFullYear()),L=S.donations.filter(n=>n.date.slice(0,4)==Y),
 m=Array.from({length:12},(_,i)=>sum(L.filter(n=>+n.date.slice(5,7)==i+1),n=>n.amount)),mx=Math.max(...m,1),tot=sum(m,x=>x),
 kf=v=>v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?Math.round(v/1e3)+'k':String(v),den=Y==String(now.getFullYear())?now.getMonth()+1:12;

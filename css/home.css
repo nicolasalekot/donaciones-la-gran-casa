@@ -172,7 +172,7 @@
 }
 
 /* En Inicio la marca de agua de fondo sobra: el logo ya es protagonista */
-body[data-v="inicio"] .wm { display: none; }
+body[data-v="inicio"] .wm, body[data-v="panel"] .wm { display: none; }
 
 /* ---- Recientes bajo "Nuevo" y "Consulta" ---- */
 .recent { margin-top: 38px; animation: rise .6s .1s cubic-bezier(.2, .8, .2, 1) backwards; }

@@ -35,7 +35,7 @@ function sparkSvg(vals){
 }
 
 /* Una tarjeta de vidrio que lleva a una sección. */
-const gcard=(k,t,s,vis,foot,cls='')=>`<a class="gc ${cls}" href="#${k}"><div class="gc-h"><h3>${t}</h3><p>${s}</p></div><div class="gc-v">${vis}</div><div class="gc-f"><span>${foot}</span><i class="arr">${ARROW}</i></div></a>`;
+const gcard=(k,t,s,vis,foot,cls='')=>k?`<a class="gc ${cls}" href="#${k}"><div class="gc-h"><h3>${t}</h3><p>${s}</p></div><div class="gc-v">${vis}</div><div class="gc-f"><span>${foot}</span><i class="arr">${ARROW}</i></div></a>`:`<div class="gc ${cls}"><div class="gc-h"><h3>${t}</h3><p>${s}</p></div><div class="gc-v">${vis}</div><div class="gc-f"><span>${foot}</span></div></div>`;
 
 VIEW.inicio=()=>{
   const h=homeData(),nd=h.yr.length;
@@ -58,6 +58,12 @@ VIEW.inicio=()=>{
       </div>
     </div></section>`;
 
+  return`<div class="home">${hero}</div>`;
+};
+
+/* Panel principal: el "¿Qué querés hacer hoy?" con una tarjeta de vidrio por sección. */
+function homeCards(){
+  const h=homeData(),nd=h.yr.length;
   /* ---- tarjetas ---- */
   const mxb=Math.max(1,...h.last6.map(x=>x.v));
   const bars=h.last6.length?`<div class="mbars">${h.last6.map(x=>`<div><i style="--h:${Math.max(.06,x.v/mxb).toFixed(3)}"></i><span>${x.m}</span></div>`).join('')}</div>`:'<p class="gc-e">Todavía no hay donaciones este año.</p>';
@@ -75,8 +81,10 @@ VIEW.inicio=()=>{
     ${gcard('donantes','Donantes','Afiliados y ocasionales',av,`${S.donors.length} donantes · ${h.afil} afiliados`,'c4')}
     ${gcard('eventos','Eventos','Metas, ingresos y egresos',evv,h.next.length?`${h.next.length} ${h.next.length==1?'próximo':'próximos'}`:'Sin próximos','c4')}
     ${gcard('estadisticas','Estadísticas','Cómo se reparten los ingresos',seg,'Por mes, origen y tipo','c7')}
-    ${gcard('panel','Panel principal','Resumen de la fundación',dispv,'Ver todas las cifras','c5')}
+    ${gcard(null,'Disponible','Para usar en la fundación',dispv,'Donaciones, sin los ingresos de eventos','c5')}
     ${can('usuarios')?gcard('usuarios','Usuarios','Quién puede entrar y qué puede hacer',usv,`${tu} ${tu==1?'cuenta':'cuentas'}`,'c12 wide'):''}
   </section>`;
-  return`<div class="home">${hero}${cards}</div>`;
-};
+  return cards;
+}
+VIEW.panel=()=>`<div class="home">${homeCards()}</div>`;
+
